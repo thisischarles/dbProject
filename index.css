@@ -1,0 +1,43 @@
+body{
+    background-color: black;
+}
+.whiteText{
+    color: white;
+}
+
+.greenButton{
+    background-color: green;
+    font-size: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none;
+    color: initial;
+}
+
+.blueButton{
+     background-color: blue;
+     font-size: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none;
+    color: initial;
+ }
+
+.redButton{
+    background-color: red;
+    font-size: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none;
+    color: initial;
+}
+
+.grayButton{
+    background-color: gray;
+    font-size: 20px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none;
+    color: initial;
+}
+
