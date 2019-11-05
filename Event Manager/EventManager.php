@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Controller</title>
+    <title>Event Manager</title>
+    <link rel = "EventManager.css" type = "stylesheet"/>
 </head>
 <body>
 

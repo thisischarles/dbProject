@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>System Administrator</title>
+    <title>Controller</title>
+    <link rel = "Controller.css" type = "stylesheet"/>
 </head>
 <body>
 
