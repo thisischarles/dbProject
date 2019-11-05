@@ -6,6 +6,11 @@
     <link rel = "AddEvent.css" type = "stylesheet"/>
 </head>
 <body>
+    <?php
+        $event = 5;
+        function addEvent($event){
 
+        }
+    ?>
 </body>
 </html>
