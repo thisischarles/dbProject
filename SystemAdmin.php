@@ -15,7 +15,7 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 	padding-left: 10px;
 }
 .button{
-	background-color: #4CAF50;
+	background-color: #29962e;
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -26,12 +26,27 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 	margin:4px 2px;
 	cursor: pointer;
 	}
+.SignOutButton{
+	background-color: #29962e;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin:4px 2px;
+	cursor: pointer;
+	position: relative;
+	left: 1300px;
+	bottom: 600px;
+	}	
 </style>
 </head>
 <body>
 <h1>
 System Admin 
-<p>Welcome System Admin!</p>
+<p>Welcome System Admin Name!</p>
 </h1>
 <hr>
 <div id="grad1">
@@ -54,6 +69,7 @@ System Admin
 <button class="button">View List of Participants</button>
 <br>
 <br>
+<button class="SignOutButton">Sign Out</button>
 </div>
 </body>
 </html>
