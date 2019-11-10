@@ -3,19 +3,48 @@
 <head>
   <meta charset = "utf-8" />
   <title>Home</title>
+  <link rel = "stylesheet" href = "design.css" />
 </head>
 <body>
-  <p>
-    Create group
-  </p>
-  <p>
-    Add participant to event
-  </p>
-  <p>
-    Accept invitation
-  </p>
-  <p>
-    Notifications
-  </p>
+  <?php
+    include(Header.php);
+   ?>
+   <table border = "0">
+     <tr>
+       <th>
+         Profile pic
+       </th>
+       <td>
+         Create group
+       </td>
+     </tr>
+     <tr>
+       <td>
+
+       </td>
+       <td>
+         Add participant to event
+       </td>
+     </tr>
+     <tr>
+       <td>
+
+       </td>
+       <td>
+         Invitations
+       </td>
+     </tr>
+     <tr>
+       <td>
+
+       </td>
+       <td>
+         Notifications
+       </td>
+     </tr>
+   </table>
+  <?php
+    include(Footer.php);
+   ?>
 </body>
 </html>
