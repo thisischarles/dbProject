@@ -5,8 +5,8 @@
   <title>Profile</title>
   <link rel = "stylesheet" href = "design.css" />
   <style>
-  .button{
-  	background-color: #29962e;
+  .changePasswordButton{
+  	background-color: blue;
   	border: none;
   	color: white;
   	padding: 15px 32px;
