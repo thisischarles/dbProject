@@ -12,20 +12,10 @@ include('Header.php');
             </div>
             <a href="forgot_pwd.php">Forgot password?</a>
             <br><br>
-            <button class="open-button" onclick="openForm()">Open Form</button>
+            <button><a href="Sign_Up.php">Sign Up</a></button>
             <br><br>
         </form>
     </div>
-
-    <script>
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-    </script>
 <?php
 include('Footer.php');
 ?>

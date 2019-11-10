@@ -9,13 +9,13 @@ a:hover, a:active {
     text-decoration: none;
 }
 .header-bg {
-     background-color: #138808;
+     background-color: #FF9933;
  }
 
 .footer {
     bottom: 5;
     width: 100%;
-    background-color: #FF9933;
+    background-color: #138808;
 }
 
 .homepage-text {
