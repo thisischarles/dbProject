@@ -53,9 +53,9 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 .addeventform-popup
 {
 	display:none;
-	position: fixed;	
-	bottom: 0;
-	right; 15px;
+	position: absolute;	/*was position: fixed*/
+	top: 170px;	/*was bottom: 0*/
+	right: 870px;	/*was 15px*/
 	border: 3px solid #f1f1f1;
 	z-index:9;
 	margin-left:auto;
@@ -64,9 +64,9 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 .assignmanagerform-popup
 {
 	display:none;
-	position: fixed;
-	bottom: 0;
-	right; 30px;
+	position: absolute;
+	top: 170px;
+	right: 540px;
 	border: 3px solid #f1f1f1;
 	z-index:9;
 	margin-left:auto;
@@ -75,42 +75,44 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 .addparticipantform-popup
 {
 	display:none;
-	position: fixed;
-	bottom: 0;
-	right; 45px;
+	position: absolute;
+	top: 170px;
+	right: 210px;
 	border: 3px solid #f1f1f1;
 	z-index:9;
 }
 .changeeventstatusform-popup
 {
 	display:none;
-	position: fixed;
-	bottom: 0;
-	right; 60px;
+	position: absolute;
+	top: 425px;
+	right: 870px;
 	border: 3px solid #f1f1f1;
 	z-index:9;
 }
 .viewlistofeventsform-popup
 {
 	display:none;
-	position: fixed;
-	bottom: 0;
-	right; 75px;
+	position: absolute;
+	top: 425px;
+	right: 540px;
 	border: 3px solid #f1f1f1;
 	z-index:9;
 }
 .viewlistofparticipantsform-popup
 {
 	display:none;
-	position: fixed;
-	bottom: 0;
-	right; 90px;
+	position: absolute;
+	top: 425px;
+	right: 210px;
 	border: 3px solid #f1f1f1;
 	z-index:9;
 }
 /*class used to add styles to the form*/
 .form-container
 {
+	min-height: 225px;
+	min-width: 300px;
 	max-width: 300px;
 	padding: 10px;
 	background-color: lightblue;
