@@ -190,7 +190,6 @@
          <div class="form-popup" id="nameForm">
            <form action="/action_page.php" class="form-container">
              <h1>Change name</h1>
-
              <label for="email"><b>Name</b></label>
              <input type="text" placeholder="Enter current name" name="name" required>
 
