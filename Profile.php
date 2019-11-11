@@ -32,6 +32,10 @@
   	left: 1300px;
   	bottom: 600px;
   	}
+    img{
+      width: 50%;
+      height: 50%;
+    }
   </style>
 </head>
 <body>
@@ -41,31 +45,38 @@
   <table border = "0">
     <tr>
       <th>
-        Profile pic
+        <img src = "Avatars/Karen.png" />
       </th>
+    </tr>
+    <tr>
       <td>
-        Name
+        getName()
+      </td>
+      <td>
+        getEmail()
       </td>
     </tr>
     <tr>
       <td>
-
-      </td>
-      <td>
-        Email
-      </td>
-    </tr>
-    <tr>
-      <td>
-
-      </td>
-      <td>
-        DOB
+        getDOB()
       </td>
     </tr>
   </table>
   <?php
     include('Footer.php');
    ?>
+   <script>
+    function getName(){
+
+    }
+
+    function getEmail(){
+
+    }
+
+    function getDOB(){
+
+    }
+   </script>
 </body>
 </html>
