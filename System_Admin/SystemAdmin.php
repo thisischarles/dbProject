@@ -164,6 +164,9 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 </style>
 </head>
 <body>
+<?php
+include('../System/Header.php');
+?>
 <h1>
 System Admin 
 <p>Welcome System Admin Name!</p>
@@ -273,6 +276,9 @@ System Admin
 		<button type="submit" class="cancelButton" onClick="closeListOfParticipantsForm()">Cancel</button>
 	</form>
 </div>
+<?php
+include('../System/Footer.php');
+?>
 <script>
 function openEventForm()
 {

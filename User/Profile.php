@@ -40,7 +40,7 @@
 </head>
 <body>
   <?php
-    include('Header.php');
+    include('../System/Header.php');
    ?>
   <table border = "0">
     <tr>
@@ -63,7 +63,7 @@
     </tr>
   </table>
   <?php
-    include('Footer.php');
+    include('../System/Footer.php');
    ?>
    <script>
     function getName(){

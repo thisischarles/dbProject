@@ -16,6 +16,14 @@ include('Header.php');
             <br><br>
         </form>
     </div>
+    <button><a href="../Controller/Controller.php">Controller</a></button>
+    <button><a href="../Event/Event.php">Event</a></button>
+    <button><a href="../Event_Admin/Event_Admin_Homepage.php">Event Admin</a></button>
+    <button><a href="../Event_Manager/Event_Manager_Homepage.php">Event Manager</a></button>
+    <button><a href="../Group/Group_Page.php">Group</a></button>
+    <button><a href="../System_Admin/SystemAdmin.php">System Admin</a></button>
+    <button><a href="../User/UserHomePage.php">User</a></button>
+    <button><a href="../User/Profile.php">Profile</a></button>
 <?php
 include('Footer.php');
 ?>

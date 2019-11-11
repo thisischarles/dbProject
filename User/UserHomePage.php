@@ -117,7 +117,7 @@
 </head>
 <body>
   <?php
-    include(Header.php);
+    include("../System/Header.php");
    ?>
    <form align="right" name="form1" method="post" action="log_out.php">
      <label class="logoutLblPos">
@@ -184,7 +184,7 @@
      </tr>
    </table>
   <?php
-    include(Footer.php);
+    include("../System/Footer.php");
    ?>
    <script>
       function openNotificationsForm(){

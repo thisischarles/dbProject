@@ -155,6 +155,9 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 </style>
 </head>
 <body>
+<?php
+include('../System/Header.php');
+?>
 <h1>
 Controller
 <p>Welcome Controller Name!</p>
@@ -233,6 +236,9 @@ Controller
 		<button type="submit" class="cancelButton" onClick="closeListOfEventsForm()">Cancel</button>
 	</form>
 </div>
+<?php
+include('../System/Footer.php');
+?>
 <script>
 function openChargeRateForm()
 {

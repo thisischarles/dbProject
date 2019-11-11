@@ -128,6 +128,9 @@ background-image:linear-gradient(to right, lightgreen, mediumspringgreen);
 </style>
 </head>
 <body>
+<?php
+include('../System/Header.php');
+?>
 <h1>
 Events
 <p>Welcome to the Events page!</p>
@@ -173,6 +176,9 @@ Events
 		<button type="submit" class="cancelButton" onClick="closePostEventForm()">Cancel</button>
 	</form>
 </div>
+<?php
+include('../System/Footer.php');
+?>
 <script>
 function openEventForm()
 {
