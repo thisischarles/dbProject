@@ -186,34 +186,6 @@
   <?php
     include("../System/Footer.php");
    ?>
-   <script>
-      function openNotificationsForm(){
-        document.getElementById("notificationsForm").style.display ="block";
-      }
-      function closeNotificationsForm(){
-        document.getElementById("notificationsForm").style.display ="none";
-      }
-
-      function openParticipantForm(){
-        document.getElementById("addParticipantForm").style.display ="block";
-      }
-      function closeParticipantForm(){
-        document.getElementById("addParticipantForm").style.display ="none";
-      }
-
-      function openInvitationsForm(){
-        document.getElementById("invitationsForm").style.display ="block";
-      }
-      function closeInvitationsForm(){
-        document.getElementById("invitationsForm").style.display ="none";
-      }
-
-      function openCreateGroupForm(){
-        document.getElementById("createGroupForm").style.display ="block";
-      }
-      function closeCreateGroupForm(){
-        document.getElementById("createGroupForm").style.display ="none";
-      }
-   </script>
+  <script src="Homepage.js"></script>
 </body>
 </html>

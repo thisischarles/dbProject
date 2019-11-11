@@ -24,6 +24,7 @@ include('Header.php');
     <button><a href="../System_Admin/SystemAdmin.php">System Admin</a></button>
     <button><a href="../User/UserHomePage.php">User</a></button>
     <button><a href="../User/Profile.php">Profile</a></button>
+    <br><br>
 <?php
 include('Footer.php');
 ?>
