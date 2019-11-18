@@ -41,7 +41,7 @@ a:hover, a:active {
     font-size: 16px;
     margin:4px 2px;
     cursor: pointer;
-    width: 300px;
+    width: 15%;
 }
 
 {box-sizing: border-box;}
@@ -91,7 +91,7 @@ a:hover, a:active {
     font-size: 16px;
     margin:4px 2px;
     cursor: pointer;
-    width: 120px;
+    width: 44%;
 }
 
 .closeButton{
@@ -105,5 +105,5 @@ a:hover, a:active {
     font-size: 16px;
     margin:4px 2px;
     cursor: pointer;
-    width: 120px;
+    width: 44%;
 }
