@@ -37,7 +37,7 @@ Controller
 		<input type="text" placeholder="Enter the Charge rate" name="ChargeRate" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="closeButton" onClick="closeChargeRateForm()">Cancel</button>
+		<button class="closeButton" onClick="closeChargeRateForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="BandWidthForm">
@@ -48,7 +48,7 @@ Controller
 		<input type="text" placeholder="Enter the Bandwidth" name="Bandwidth" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="closeButton" onClick="closeBandWidthForm()">Cancel</button>
+		<button class="closeButton" onClick="closeBandWidthForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="DiscountForm">
@@ -59,7 +59,7 @@ Controller
 		<input type="text" placeholder="Enter the Discount" name="Discount" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="closeButton" onClick="closeDiscountForm()">Cancel</button>
+		<button class="closeButton" onClick="closeDiscountForm()">Cancel</button>
 	</form>
 </div> 
 <div class="form-popup" id="StorageForm">
@@ -70,7 +70,7 @@ Controller
 		<input type="text" placeholder="Enter the Storage capacity" name="Storage" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="closeButton" onClick="closeEventStatusForm()">Cancel</button>
+		<button class="closeButton" onClick="closeEventStatusForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="PeriodForm">
@@ -80,7 +80,7 @@ Controller
 		<label for="Period"><b>Period</b></label>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="closeButton" onClick="closeListOfEventsForm()">Cancel</button>
+		<button class="closeButton" onClick="closeListOfEventsForm()">Cancel</button>
 	</form>
 </div>
 <?php

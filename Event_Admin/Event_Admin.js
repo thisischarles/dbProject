@@ -1,60 +1,45 @@
-function openChargeRateForm()
+function openModifyEventForm()
 {
-    document.getElementById("PeriodForm").style.display="none";
-    document.getElementById("BandWidthForm").style.display="none";
-    document.getElementById("DiscountForm").style.display="none";
-    document.getElementById("StorageForm").style.display="none";
-    document.getElementById("ChargeRateForm").style.display="block";
+    closeUploadForm();
+    closePostContentForm();
+    closeRemoveAddUpdateForm();
+    document.getElementById("ModifyEventForm").style.display="block";
 }
-function openBandWidthForm()
+function openUploadForm()
 {
-    document.getElementById("PeriodForm").style.display="none";
-    document.getElementById("ChargeRateForm").style.display="none";
-    document.getElementById("DiscountForm").style.display="none";
-    document.getElementById("StorageForm").style.display="none";
-    document.getElementById("BandWidthForm").style.display="block";
+    closeModifyEventForm();
+    closePostContentForm();
+    closeRemoveAddUpdateForm();
+    document.getElementById("UploadForm").style.display="block";
 }
-function openDiscountForm()
+function openPostContentForm()
 {
-    document.getElementById("PeriodForm").style.display="none";
-    document.getElementById("ChargeRateForm").style.display="none";
-    document.getElementById("BandWidthForm").style.display="none";
-    document.getElementById("StorageForm").style.display="none";
-    document.getElementById("DiscountForm").style.display="block";
+    closeModifyEventForm();
+    closeUploadForm();
+    closeRemoveAddUpdateForm();
+    document.getElementById("PostContentForm").style.display="block";
 }
-function openStorageForm()
+function openRemoveAddUpdateForm()
 {
-    document.getElementById("PeriodForm").style.display="none";
-    document.getElementById("ChargeRateForm").style.display="none";
-    document.getElementById("BandWidthForm").style.display="none";
-    document.getElementById("DiscountForm").style.display="none";
-    document.getElementById("StorageForm").style.display="block";
+    closeModifyEventForm();
+    closeUploadForm();
+    closePostContentForm();
+    document.getElementById("RemoveAddUpdateForm").style.display="block";
 }
-function openPeriodForm()
+
+function closeModifyEventForm()
 {
-    document.getElementById("ChargeRateForm").style.display="none";
-    document.getElementById("BandWidthForm").style.display="none";
-    document.getElementById("DiscountForm").style.display="none";
-    document.getElementById("StorageForm").style.display="none";
-    document.getElementById("PeriodForm").style.display="block";
+    document.getElementById("ModifyEventForm").style.display="none";
 }
-function closeChargeRateForm()
+function closeUploadForm()
 {
-    document.getElementById("ChargeRateForm").style.display="none";
+    document.getElementById("UploadForm").style.display="none";
 }
-function closeBandWidthForm()
+function closePostContentForm()
 {
-    document.getElementById("BandWidthForm").style.display="none";
+    document.getElementById("PostContentForm").style.display="none";
 }
-function closeDiscountForm()
+function closeRemoveAddUpdateForm()
 {
-    document.getElementById("DiscountForm").style.display="none";
-}
-function closeStorageForm()
-{
-    document.getElementById("StorageForm").style.display="none";
-}
-function closePeriodForm()
-{
-    document.getElementById("PeriodForm").style.display="none";
+    document.getElementById("RemoveAddUpdateForm").style.display="none";
 }

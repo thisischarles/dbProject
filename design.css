@@ -1,11 +1,9 @@
 a:link, a:visited {
     color: black;
-    background-color: transparent;
     text-decoration: none;
 }
 a:hover, a:active {
     color: #000080;
-    background-color: transparent;
     text-decoration: none;
 }
 .header-bg {
@@ -66,6 +64,7 @@ a:hover, a:active {
     right: 15px;
     border: 3px solid #f1f1f1;
     z-index: 9;
+    background-color: white;
 }
 
 .form-container {

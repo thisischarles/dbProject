@@ -32,7 +32,7 @@ System Admin
 <button class="button" onClick="openListOfParticipantsForm()">View List of Participants</button>
 <br>
 <br>
-<div class="addeventform-popup" id="EventForm">
+<div class="form-popup" id="EventForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>Add Event</h1>
 		<br>
@@ -40,10 +40,10 @@ System Admin
 		<input type="text" placeholder="Enter the Event Name" name="Event" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="cancelButton" onClick="closeEventForm()">Cancel</button>
+		<button class="closeButton" onClick="closeEventForm()">Cancel</button>
 	</form>
 </div>
-<div class="assignmanagerform-popup" id="ManagerForm">
+<div class="form-popup" id="ManagerForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>Add Event Manager</h1>
 		<br>
@@ -57,10 +57,10 @@ System Admin
 		<input type="text" placeholder="Enter the assigned Event" name="Manager3" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="cancelButton" onClick="closeManagerForm()">Cancel</button>
+		<button class="closeButton" onClick="closeManagerForm()">Cancel</button>
 	</form>
 </div>
-<div class="addparticipantform-popup" id="ParticipantForm">
+<div class="form-popup" id="ParticipantForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>Add Participant</h1>
 		<br>
@@ -71,10 +71,10 @@ System Admin
 		<input type="text" placeholder="Enter the Participant's Last Name" name="participant2" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="cancelButton" onClick="closeParticipantForm()">Cancel</button>
+		<button class="closeButton" onClick="closeParticipantForm()">Cancel</button>
 	</form>
 </div> 
-<div class="changeeventstatusform-popup" id="EventStatusForm">
+<div class="form-popup" id="EventStatusForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>Change Event Status</h1>
 		<br>
@@ -85,10 +85,10 @@ System Admin
 		<input type="text" placeholder="Enter the Event's status" name="EventStatus2" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button type="submit" class="cancelButton" onClick="closeEventStatusForm()">Cancel</button>
+		<button class="closeButton" onClick="closeEventStatusForm()">Cancel</button>
 	</form>
 </div>
-<div class="viewlistofeventsform-popup" id="ListOfEventsForm">
+<div class="form-popup" id="ListOfEventsForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>List of Events</h1>
 		<br>
@@ -98,10 +98,10 @@ System Admin
 		<br>
 		<label for="ListEventName3"><b>Event 3</b></label>
 		<br>
-		<button type="submit" class="cancelButton" onClick="closeListOfEventsForm()">Cancel</button>
+		<button class="closeButton" onClick="closeListOfEventsForm()">Cancel</button>
 	</form>
 </div>
-<div class="viewlistofparticipantsform-popup" id="ListOfParticipantsForm">
+<div class="form-popup" id="ListOfParticipantsForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>List of Participants</h1>
 		<br>
@@ -111,61 +111,12 @@ System Admin
 		<br>
 		<label for="ListParticipantName3"><b>Participant 3</b></label>
 		<br>
-		<button type="submit" class="cancelButton" onClick="closeListOfParticipantsForm()">Cancel</button>
+		<button class="closeButton" onClick="closeListOfParticipantsForm()">Cancel</button>
 	</form>
 </div>
 <?php
 include('../System/Footer.php');
 ?>
-<script>
-function openEventForm()
-{
-	document.getElementById("EventForm").style.display="block";
-}
-function openManagerForm()
-{
-	document.getElementById("ManagerForm").style.display="block";
-}
-function openParticipantForm()
-{
-	document.getElementById("ParticipantForm").style.display="block";
-}
-function openEventStatusForm()
-{
-	document.getElementById("EventStatusForm").style.display="block";
-}
-function openListOfEventsForm()
-{
-	document.getElementById("ListOfEventsForm").style.display="block";
-}
-function openListOfParticipantsForm()
-{
-	document.getElementById("ListOfParticipantsForm").style.display="block";
-}
-function closeEventForm()
-{
-	document.getElementById("EventForm").style.display="none";
-}
-function closeManagerForm()
-{
-	document.getElementById("ManagerForm").style.display="none";
-}
-function closeParticipantForm()
-{
-	document.getElementById("ParticipantForm").style.display="none";
-}
-function closeEventStatusForm()
-{
-	document.getElementById("EventStatusForm").style.display="none";
-}
-function closeListOfEventsForm()
-{
-	document.getElementById("ListOfEventsForm").style.display="none";
-}
-function closeListOfParticipantsForm()
-{
-	document.getElementById("ListOfParticipantsForm").style.display="none";
-}
-</script>
+<script src="System_Admin.js"></script>
 </body>
 </html>

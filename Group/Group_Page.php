@@ -14,7 +14,7 @@ include('../System/Header.php');
                 Information
             </h3>
             <h3>
-                <button>Post</button>
+                <button class="button">Post</button>
             </h3>
             <h3>
                 Past Posts

@@ -47,7 +47,7 @@
 /*used for the input fields*/
 .form-container input[type-text]
 {
-	width:100%
+	width:100%;
 	padding:15px;
 	margin:5px 0 22px 0;
 	border: none;
@@ -67,7 +67,7 @@
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
-	width: 100%
+	width: 100%;
 	margin-bottom:10px;
 	opacity: 0.8;
 }
@@ -79,7 +79,7 @@
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
-	width: 100%
+	width: 100%;
 	margin-bottom:10px;
 	opacity: 0.8;
 }
