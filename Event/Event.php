@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="EventCSS.css"/>
-    <link rel="stylesheet" href="design.css"/>
+    <link rel="stylesheet" href="../design.css">
 <title>Event</title>
 </head>
 <body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="SystemAdminCSS.css"/>
+<link rel="stylesheet" href="../design.css">
 <title>System Admin</title>
 </head>
 <body>
