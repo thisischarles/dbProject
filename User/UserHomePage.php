@@ -12,7 +12,7 @@
    <table border = "0">
      <tr>
        <th>
-        <img class="img" src="../Avatars/Karen.png" alt = "Karen" />
+        <img class="img" src="" alt = "Karen" />
        </th>
      </tr>
      <tr>

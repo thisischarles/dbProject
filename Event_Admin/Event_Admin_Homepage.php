@@ -1,7 +1,7 @@
 <?php
 include('../System/Header.php');
 ?>
-<link rel = "stylesheet" href = "design.css" />
+<link rel = "stylesheet" href = "..\design.css" />
 <h1>
     Welcome to your personal homepage! Click on the options below to perform an action!
 </h1>
@@ -19,10 +19,10 @@ include('../System/Header.php');
 </h2>
 <h2>
     List of Events
+</h2>
     <h3>
         List of Participants
     </h3>
-</h2>
 <h2>
     List of Archived Events
 </h2>
@@ -90,7 +90,7 @@ include('../System/Header.php');
     </form>
 </div>
 <div class="form-popup" id="UploadForm">
-    <form action="/action_page.php" Class="form-container">
+    <form action="..\CSV.php" method="post" Class="form-container" enctype="multipart/form-data">
         <h1>Select CSV file</h1>
         <br>
         Select a file: <input type="file" name="myFile"><br><br>
@@ -102,4 +102,5 @@ include('../System/Header.php');
 <script src="Event_Admin.js"></script>
 <?php
 include('../System/Footer.php');
+
 ?>
