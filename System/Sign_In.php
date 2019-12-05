@@ -9,9 +9,11 @@ include('Header.php');
             <br><br>
             <input required id="password" type="password" name="user_pass" placeholder="Password"><br><br>
             <button type="submit" class="submitButton">Log in</button>
-            <br>
-            <br><br>
+    
         </form>
+	<?php if (isset($_GET["problem"]))
+        	echo "<div><strong>Error!</strong>" . $_GET["problem"] . "</div>";
+    	?>
         <button class="button" onclick="openSignUpForm()">Sign Up</button>
     </div>
 <br> <!--
@@ -49,6 +51,7 @@ include('Header.php');
                 <button class="closeButton" onClick="closeSignUpForm()">Cancel</button>
             </div>
         </form>
+	
     </div>
     <script>
         function openSignUpForm()

@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+session_start();
 include('../sql_connector.php');
 ?>
 <link rel="stylesheet" href="../design.css">
@@ -21,7 +19,7 @@ include('../sql_connector.php');
                 echo "<a href=\"Event_Manager/Homepage.php\">Event Manager</a>   ";
             if (mysqli_num_rows($db->query("SELECT * from EventAdministator where UserID = $id;")) == 1)
                 echo "<a href=\"Event_Admin/Homepage.php\">Event Admin</a>  ";
-            echo "Welcome " . $_SESSION['user_name'] . "  <a href='LogOff.php'>Log Off</a>";
+            echo "<th align='right'>Welcome " . $_SESSION['user_name'] . "  <a href='LogOff.php'>Log Off</a></th>";
         }
         ?>
     </tr>

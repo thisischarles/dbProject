@@ -1,9 +1,5 @@
 <?php
-/*
-$user = 'jrc353_2';
-$password = 'gfgaFP';
-$database = 'jrc353_2';
-$db = new mysqli("jrc353.encs.concordia.ca", $user, $password, $database) or die("cannot connect");
+include('sql_connector.php');
 
 $fin = fopen($_FILES['myFile']['name'],'r') or die('cant open file');
 $theQ = '';

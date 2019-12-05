@@ -45,20 +45,34 @@
   <table border = "0">
     <tr>
       <th>
-        <img src = "Avatars/Karen.png" />
+       	<?php
+	$imgID = $_SESSION['user_id'];
+	$img = "SELECT $imgID FROM Images WHERE ImageID = $imgID ";
+	echo $img;
+	?>
       </th>
     </tr>
     <tr>
       <td>
-        getName()
+        <?php
+	$first_name = "SELECT FirstName FROM User WHERE UserID = $_SESSION['user_id']"; 
+	$last_name = "SELECT LastName FROM User WHERE UserID = $_SESSION['user_id']";
+	echo ($first_name." ".$last_name);
+	?>
       </td>
       <td>
-        getEmail()
+        <?php
+	$email = "SELECT Email FROM User WHERE UserID = $_SESSION['user_id']";
+	echo ($email);
+	?>
       </td>
     </tr>
     <tr>
       <td>
-        getDOB()
+      	<?php
+	$DOB = "SELECT DOB FROM User WHERE UserID = $_SESSION['user_id']";
+	echo ($DOB);
+	?>
       </td>
     </tr>
   </table>
@@ -66,17 +80,6 @@
     include('../System/Footer.php');
    ?>
    <script>
-    function getName(){
-
-    }
-
-    function getEmail(){
-
-    }
-
-    function getDOB(){
-
-    }
    </script>
 </body>
 </html>

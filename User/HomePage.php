@@ -21,6 +21,7 @@
          <div class="form-popup" id="addParticipantForm">
            <form action="/action_page.php" class="form-container">
              <h1>Participant</h1>
+		
              <label for="name"><b>Name</b></label>
              <input type="text" placeholder="Enter participant's name" name="participantName" required>
              <label for="name"><b>DOB(DDMMYY)</b></label>
