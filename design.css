@@ -38,10 +38,11 @@ a:hover, a:active {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 80%;
     margin:4px 2px;
     cursor: pointer;
-    width: 15%;
+    width: 25%;
+    min-width: 250px;
 }
 
 {box-sizing: border-box;}
