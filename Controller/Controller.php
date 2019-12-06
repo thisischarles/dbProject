@@ -31,6 +31,15 @@ Controller
 <br>
 <div class="form-popup" id="ChargeRateForm">
 	<form action="/action_page.php" Class="form-container">
+		<?php
+		$sql1 = /"SELECT ChargeRate FROM SystemAttributes/";
+		$result1 = $db->query($sql1);
+		if (mysqli_num_rows($result1) >= 1)
+		{
+			$row = $result1->fetch_assoc();
+			echo $row['ChargeRate'];
+		}
+		?>
 		<h1>Set charge rate</h1>
 		<br>
 		<label for="ChargeRate"><b>Charge rate</b></label>
@@ -70,17 +79,28 @@ Controller
 		<input type="text" placeholder="Enter the Storage capacity" name="Storage" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button class="closeButton" onClick="closeEventStatusForm()">Cancel</button>
+		<button class="closeButton" onClick="closeStorageForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="PeriodForm">
 	<form action="/action_page.php" Class="form-container">
-		<h1>Set Period</h1>
+		<label for="basePeriod"><b>Set default Period</b></label>
+		<input type="text" placeholder="Enter the default period" name="defaultPeriod" required>
+		<label for="Event"><b>Select Event</b></label>
 		<br>
-		<label for="Period"><b>Period</b></label>
+		<br>
+		<select name="periodOptions">
+			<option value="event1">Event1</option>
+			<option value="event2">Event2</option>
+			<option value="event3">Event3</option>
+		</select>
+		<br>
+		<br>
+		<label for="Period"><b>Set Period for Event</b></label>
+		<input type="text" placeholder="Enter the period" name="Period" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button class="closeButton" onClick="closeListOfEventsForm()">Cancel</button>
+		<button class="closeButton" onClick="closePeriodForm()">Cancel</button>
 	</form>
 </div>
 <?php
