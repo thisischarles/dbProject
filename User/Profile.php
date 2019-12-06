@@ -56,8 +56,7 @@
 		$imag = mysqli_fetch_array($imageOfUser);
 		
 		$userImage = $imag['Image']; 
-		echo "<img src = $userImage>"; 
-		
+		echo "<a href = 'Homepage.php'><img src = $userImage></a>"; 
 	?>
       </th>
     </tr>

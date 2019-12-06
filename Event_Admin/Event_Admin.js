@@ -59,3 +59,22 @@ function previewFile() {
         preview.src = "";
     }
 }
+function openViewEvents()
+{
+    document.getElementById("ViewEvents").style.display="block";
+}
+function closeViewEvents()
+{
+    document.getElementById("ViewEvents").style.display="none";
+}
+function openViewEvents()
+{
+    document.getElementById("ViewEvents").style.display="block";
+    document.getElementById("changeB").innerHTML = '<button class="button" onClick="closeViewEvents()">Close List Of Events</button>';
+}
+function closeViewEvents()
+{
+    document.getElementById("ViewEvents").style.display="none";
+    document.getElementById("changeB").innerHTML = '<button class="button" onClick="openViewEvents()">Open List Of Events</button>';
+}
+

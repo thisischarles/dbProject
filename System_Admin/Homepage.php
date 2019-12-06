@@ -1,5 +1,7 @@
 <?php
 include('../System/Header.php');
+if (isset($_SESSION['auth'])) {
+	if (mysqli_num_rows($db->query("SELECT * from SystemAdministrator where UserID = $id;")) >= 1) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,12 +28,12 @@ System Admin
 <button class="button" onClick="openEventStatusForm()">Change Event Status</button>
 <br>
 <br>
-<h2>
-    List of Events
+<h2 id ="changeB">
+<button class="button" onClick="openViewEvents()">Open List Of Events</button>
 </h2>
+<div class="hiding" id="ViewEvents">
 <?php
-
-$result = $db->query("SELECT EventID, Name, Organization from Events;");
+$result = $db->query("SELECT * from Events;");
 if (mysqli_num_rows($result) >= 1) {
 	echo "<table border='1'>";
             echo "<tr >";
@@ -62,12 +64,13 @@ echo "</table>";
         echo "Error?";
     }
 ?> 
+</div>
 <br>
 <br>
 <br>
 <br>
 <div class="form-popup" id="EventForm">
-	<form action="/action_page.php" Class="form-container">
+	<form Class="form-container">
 		<h1>Add Event</h1>
 		<br>
 		<label for="eventName"><b>Event Name</b></label>
@@ -82,10 +85,23 @@ echo "</table>";
 		<label for="location"><b>Location</b></label>
 		<input type="text" placeholder="Enter the Event Location" name="Event4" required>
 		<br>
-		<label for="date"><b>Event Name</b></label>
+		<label for="date"><b>Event Date</b></label>
 		<input type="text" placeholder="Enter the Event Date" name="Event5" required>
 		<br>
-		<button type="submit" class="submitButton">Submit</button>
+		<input type="submit" name="addEventSubmit" value="Submit" class="submitButton">
+		<?php
+			
+			if(isset($_GET['addEventSubmit']))
+			{
+				$eventNameVariable=$_GET['Event1'];
+				$eventDurationVariable=$_GET['Event2'];
+				$eventOrganizationVariable=$_GET['Event3'];
+				$eventLocationVariable=$_GET['Event4'];
+				$eventDateVariable=$_GET['Event5'];
+				$sql1 = "INSERT INTO Events(Name, Duration, Organization, Location, StartTime) VALUES ('$eventNameVariable', '$eventDurationVariable', '$eventOrganizationVariable', '$eventLocationVariable', '$eventDateVariable');";
+				$db->query($sql1);
+			}
+		?>
 		<button class="closeButton" onClick="closeEventForm()">Cancel</button>
 	</form>
 </div>
@@ -93,16 +109,23 @@ echo "</table>";
 	<form action="" Class="form-container">
 		<h1>Add Event Manager</h1>
 		<br>
-		<label for="ManagerFirstName"><b>Manager First Name</b></label>
-		<input type="text" placeholder="Enter the Manager's First Name" name="Manager1" required>
-		<br>
-		<label for="ManagerLastName"><b>Manager Last Name</b></label>
-		<input type="text" placeholder="Enter the Manager's Last Name" name="Manager2" required>
+		<label for="Manager UserName"><b>Manager Username</b></label>
+		<input type="text" placeholder="Enter the Manager's User Name" name="Manager1" required>
 		<br>
 		<label for="EventAssigned"><b>Event Assigned</b></label>
-		<input type="text" placeholder="Enter the assigned Event" name="Manager3" required>
+		<input type="text" placeholder="Enter the assigned Event ID" name="Manager3" required>
 		<br>
-		<button type="submit" class="submitButton">Submit</button>
+		<input type="submit" name="addManagerSubmit" value="Submit" class="submitButton">
+		<?php
+			
+			if(isset($_GET['addManagerSubmit']))
+			{
+				$managerUsernameVariable=$_GET['Manager1'];
+				$eventAssignedVariable=$_GET['Manager3'];
+				$sql1 = "INSERT INTO EventManager(UserID, EventID) VALUES ('$managerUsernameVariable', '$eventAssignedVariable');";
+				$db->query($sql1);
+			}
+		?>
 		<button class="closeButton" onClick="closeManagerForm()">Cancel</button>
 	</form>
 </div>
@@ -136,6 +159,10 @@ echo "</table>";
 </div>
 <script src="System_Admin.js"></script>
 <?php
+}}
+else {
+	echo "<div class=\"alert alert-danger\">YOU DO NOT HAVE AUTHORIZATION!</div>";
+}
 include('../System/Footer.php');
 ?>
 </body>

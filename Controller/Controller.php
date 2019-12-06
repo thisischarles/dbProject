@@ -26,11 +26,11 @@ Controller
 <button class="button" onClick="openStorageForm()">Set storage</button>
 <br>
 <br>
-<button class="button" onClick="openPeriodForm()">Set period</button>
+<!--<button class="button" onClick="openPeriodForm()">Set period</button>-->
 <br>
 <br>
 <div class="form-popup" id="ChargeRateForm">
-	<form action="/action_page.php" Class="form-container">
+	<form Class="form-container">
 		<?php
 		$sql1 = "SELECT ChargeRate FROM SystemAttributes";
 		$result1 = $db->query($sql1);
@@ -46,12 +46,24 @@ Controller
 		<label for="ChargeRate"><b>Charge rate</b></label>
 		<input type="text" placeholder="Enter the Charge rate" name="ChargeRate" required>
 		<br>
-		<button type="submit" class="submitButton">Submit</button>
+		<input type="submit" name="chargeRateSubmit" value="Submit" class="submitButton">
+		<?php
+			
+			if(isset($_GET['chargeRateSubmit']))
+			{
+				$chargeRateVariable=$_GET['ChargeRate'];
+				$sql1 = "UPDATE SystemAttributes SET ChargeRate = $chargeRateVariable;";
+				$db->query($sql1);
+				if($chargeRateVariable != $chargeRate) {
+					echo("<meta http-equiv='refresh' content='1'>");
+				}
+			}
+		?>
 		<button class="closeButton" onClick="closeChargeRateForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="BandWidthForm">
-	<form action="/action_page.php" Class="form-container">
+	<form Class="form-container">
 		<?php
 		$sql1 = "SELECT DefaultBW FROM SystemAttributes";
 		$result1 = $db->query($sql1);
@@ -67,7 +79,19 @@ Controller
 		<label for="BandWidth"><b>Bandwidth</b></label>
 		<input type="text" placeholder="Enter the Bandwidth" name="Bandwidth" required>
 		<br>
-		<button type="submit" class="submitButton">Submit</button>
+		<input type="submit" name="bandwidthSubmit" value="Submit" class="submitButton">
+		<?php
+			
+			if(isset($_GET['bandwidthSubmit']))
+			{
+				$bandwidthVariable=$_GET['Bandwidth'];
+				$sql1 = "UPDATE SystemAttributes SET DefaultBW = $bandwidthVariable;";
+				$db->query($sql1);
+				if($bandwidthVariable != $bandWidth) {
+					echo("<meta http-equiv='refresh' content='1'>");
+				}
+			}
+		?>
 		<button class="closeButton" onClick="closeBandWidthForm()">Cancel</button>
 	</form>
 </div>
@@ -83,7 +107,7 @@ Controller
 	</form>
 </div> 
 <div class="form-popup" id="StorageForm">
-	<form action="/action_page.php" Class="form-container">
+	<form Class="form-container">
 		<?php
 		$sql1 = "SELECT DefaultStorage FROM SystemAttributes";
 		$result1 = $db->query($sql1);
@@ -99,7 +123,19 @@ Controller
 		<label for="Storage"><b>Storage</b></label>
 		<input type="text" placeholder="Enter the Storage capacity" name="Storage" required>
 		<br>
-		<button type="submit" class="submitButton">Submit</button>
+		<input type="submit" name="storageSubmit" value="Submit" class="submitButton">
+		<?php
+			
+			if(isset($_GET['storageSubmit']))
+			{
+				$storageVariable=$_GET['Storage'];
+				$sql1 = "UPDATE SystemAttributes SET DefaultStorage = $storageVariable;";
+				$db->query($sql1);
+				if($storageVariable != $storage) {
+					echo("<meta http-equiv='refresh' content='1'>");
+				}
+			}
+		?>
 		<button class="closeButton" onClick="closeStorageForm()">Cancel</button>
 	</form>
 </div>
@@ -108,7 +144,7 @@ Controller
 		<h1>Set default Period</h1>
 		<input type="text" placeholder="Enter the default period" name="defaultPeriod" required>
 		<br>
-		<label for="Period"><b>Period</b></label>
+		
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
 		<button class="closeButton" onClick="closePeriodForm()">Cancel</button>

@@ -1,3 +1,6 @@
+<?php
+    include("../System/Header.php");
+?>
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -5,14 +8,29 @@
   <title>Home</title>
   <link rel="stylesheet" href="../design.css" />
 </head>
-<body>
-  <?php
-    include("../System/Header.php");
-   ?>
+	<a href = "Settings.php"><p>Settings</p></a>
    <table border = "0">
      <tr>
        <th>
-	//image 
+	<?php
+		$full_info = $db->query("SELECT * FROM User WHERE UserID = $id;"); 
+		$fullInfo = mysqli_fetch_array($full_info);
+		$f = $fullInfo['FirstName'];
+		$l = $fullInfo['LastName'];
+
+		$imageID = $db->query("SELECT ImageID FROM User WHERE UserID = $id;");
+		$row = mysqli_fetch_array($imageID);
+		$t = $row['ImageID'];
+		$image = "SELECT Image FROM Images WHERE ImageID = $t;";
+		
+		$imageOfUser = $db->query($image);
+		$imag = mysqli_fetch_array($imageOfUser);
+		
+		$userImage = $imag['Image']; 
+		echo "<a href = 'Homepage.php'><img src = $userImage></a>"; 
+		echo $f." ".$l;
+		
+	?>
        </th>
      </tr>
      <tr>
@@ -20,17 +38,30 @@
          <button class="button" onclick = "openParticipantForm()">Add participant to event</button>
          <div class="form-popup" id="addParticipantForm">
            <form action="/action_page.php" class="form-container">
-		<?php
-			echo "List of events: \n";
-			getEvents($_SESSION['user_id']);
-		?>
-             <h1>Participant</h1>
-		
-             <label for="name"><b>Name</b></label>
-             <input type="text" placeholder="Enter participant's name" name="participantName" required>
-             <label for="name"><b>DOB(DDMMYY)</b></label>
-             <input type="text" placeholder="Enter participant's DOB" name="participantName" required>
+		<select size = "5" required>
+			<option selected disabled>Choose an event</option>		
+<?php	
 
+			$result = $db->query("SELECT EventID, Name from Events;");
+			if (mysqli_num_rows($result) >= 1) {
+				while($row = mysqli_fetch_array($result)){
+					$eid = $row['EventID'];
+            				echo "<option value='$eid'>".$row['Name']."</option>";
+				}
+			} 			
+			else{
+        			echo "No Events To Show";
+    			}
+		
+		
+?>
+             <h1>Participants</h1>
+		
+             <label for="name"><b>Name</b></label><br>
+             <input type = "text" placeholder = "Enter participant's name: " name = "participant" required>
+		<?php
+			
+		?>
              <button type = "submit" class = "submitButton">Confirm</button>
              <button type="button" class="closeButton" onclick="closeParticipantForm()">Close</button>
            </form>
@@ -40,6 +71,23 @@
          <button class = "button" onclick = "openCreateGroupForm()">Create group</button>
          <div class="form-popup" id="createGroupForm">
            <form action="/action_page.php" class="form-container">
+		<select size = "5" required>
+			<option selected disabled>Choose an event</option>		
+<?php	
+
+			$result = $db->query("SELECT EventID, Name from Events;");
+			if (mysqli_num_rows($result) >= 1) {
+				while($row = mysqli_fetch_array($result)){
+					$eid = $row['EventID'];
+            				echo "<option value='$eid'>".$row['Name']."</option>";
+				}
+			} 			
+			else{
+        			echo "No Events To Show";
+    			}
+		
+		
+?>
              <h1>Create Group</h1>
              <label for="name"><b>Group name</b></label>
              <input type="text" placeholder="Enter group's name" name="groupName" required>
@@ -72,14 +120,11 @@
        </td>
      </tr>
    </table>
+<br>
+
   <?php
     include("../System/Footer.php");
    ?>
-  <script src="Homepage.js"></script>
-	<script>
-		function getEvents(UserID){
-			
-		}
-	</script>	
+  <script src="Homepage.js"></script>	
 </body>
 </html>

@@ -1,3 +1,6 @@
+  <?php
+    include('../System/Header.php');
+   ?>
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -131,15 +134,20 @@
   </style>
 </head>
 <body>
-  <?php
-    include('../System/Header.php');
-   ?>
-   <form align="right" name="form1" method="post" action="log_out.php">
-     <label class="logoutLblPos">
-       <input name="submit2" type="submit" id="submit2" value="log out">
-     </label>
-   </form>
-   <img src = "Avatars/Karen.png" alt = "Karen"/>
+
+	<?php	
+
+		$imageID = $db->query("SELECT ImageID FROM User WHERE UserID = $id;");
+		$row = mysqli_fetch_array($imageID);
+		$t = $row['ImageID'];
+		$image = "SELECT Image FROM Images WHERE ImageID = $t;";
+		
+		$imageOfUser = $db->query($image);
+		$imag = mysqli_fetch_array($imageOfUser);
+		
+		$userImage = $imag['Image']; 
+		echo "<a href = 'Homepage.php'><img src = $userImage></a>"; 
+	?>
 
    <table border = "0">
      <tr>

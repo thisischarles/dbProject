@@ -1,6 +1,7 @@
 <?php
 include('../System/Header.php');
-if (mysqli_num_rows($db->query("SELECT * from EventAdministator where UserID = $id;")) == 1) {
+if (isset($_SESSION['auth'])) {
+if (mysqli_num_rows($db->query("SELECT * from EventAdministator where UserID = $id;")) >= 1) {
 ?>
 <link rel = "stylesheet" href = "..\design.css" />
 <h1>
@@ -23,6 +24,10 @@ if (mysqli_num_rows($db->query("SELECT * from EventAdministator where UserID = $
 <h2>
     <button class="button" onClick="openUploadForm()">Upload CSV</button>
 </h2>
+<h2 id ="changeB">
+<button class="button" onClick="openViewEvents()">Open List Of Events</button>
+</h2>
+<div class="hiding" id="ViewEvents">
 <h2>
     List of Active Events
 </h2>
@@ -98,6 +103,7 @@ if (mysqli_num_rows($result) >= 1) {
 echo "</table>";
 }
 ?>
+</div>
 
 <div class="form-popup" id="ModifyEventForm">
     <form action="ModifyEvent.php" Class="form-container">
@@ -126,10 +132,11 @@ echo "</table>";
         <h3>Choose Event</h3>
         <select>
             <option selected disabled>Choose one</option>
-            <option value="">Event 1</option>
-            <option value="">Event 2</option>
-            <option value="">Event 3</option>
-            <option value="">Event 4</option>
+           <?php
+	for($a = 0; $a < count($eventnames); $a++) {
+            echo "<option value=$eventids[$a]>$eventnames[$a]</option>";
+	}
+         ?>
         </select>
         <br>
         <?php
@@ -149,17 +156,18 @@ echo "</table>";
     </form>
 </div>
 <div class="form-popup" id="PostContentForm">
-    <form action="../post.php" Class="form-container">
+    <form action="post.php" Class="form-container">
         <h1>Post Content</h1>
         <h3>Choose Event(s)</h3>
         (Hold CTRL to select more than 1)
         <br><br>
-        <select multiple size="5">
+        <select name = 'eventSelect[]' multiple size="5" required>
             <option selected disabled>Choose one</option>
-            <option value="">Event 1</option>
-            <option value="">Event 2</option>
-            <option value="">Event 3</option>
-            <option value="">Event 4</option>
+        <?php
+	for($a = 0; $a < count($eventnames); $a++) {
+            echo "<option value=$eventids[$a]>$eventnames[$a]</option>";
+	}
+         ?>
         </select>
         <br><br><br>
         <label for="PostContent"><b>Post</b></label>
@@ -175,9 +183,20 @@ echo "</table>";
 </div>
 <div class="form-popup" id="UploadForm">
     <form action="../CSV.php" method="post" Class="form-container" enctype="multipart/form-data">
-        <h1>Select CSV file</h1>
+	<h3>Choose Event(s)</h3>
+        (Hold CTRL to select more than 1)
+        <br><br>
+        <select multiple size="5" required>
+            <option selected disabled>Choose one</option>
+        <?php
+	for($a = 0; $a < count($eventnames); $a++) {
+            echo "<option value=$eventids[$a]>$eventnames[$a]</option>";
+	}
+         ?>
+        </select>
         <br>
-        Select a file: <input type="file" name="myFile"><br><br>
+        <h3>Select CSV file</h3>
+        Select a file: <input type="file" name="myFile" required><br><br>
         <br>
         <button type="submit" class="submitButton">Submit</button>
         <button class="closeButton" onClick="closeUploadForm()">Cancel</button>
@@ -185,7 +204,7 @@ echo "</table>";
 </div>
 <script src="Event_Admin.js"></script>
 <?php
-}
+}}
 else {
 	echo "<div class=\"alert alert-danger\">YOU DO NOT HAVE AUTHORIZATION!</div>";
 }

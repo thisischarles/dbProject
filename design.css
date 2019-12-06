@@ -68,6 +68,10 @@ a:hover, a:active {
     background-color: white;
 }
 
+.hiding {
+    display: none;
+}
+
 .form-container {
     max-width: 300px;
     padding: 10px;
@@ -107,4 +111,18 @@ a:hover, a:active {
     margin:4px 2px;
     cursor: pointer;
     width: 44%;
+}
+
+select {
+  width: 200px;
+  max-width: 100%;
+  /* So it doesn't overflow from it's parent */
+}
+
+option {
+  /* hide text that can't wrap with an ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* add border after every option */
+  border-bottom: 1px solid #DDD;
 }
