@@ -16,17 +16,7 @@ include('Header.php');
     	?>
         <button class="button" onclick="openSignUpForm()">Sign Up</button>
     </div>
-<br> <!--
-    <button ><a href="../Controller/Controller.php">Controller</a></button>
-    <button><a href="../Event/Event.php">Event</a></button>
-    <button><a href="../Event_Admin/Homepage.php">Event Admin</a></button>
-    <button><a href="../Event_Manager/Homepage.php">Event Manager</a></button>
-    <button><a href="../Group/Group_Page.php">Group</a></button>
-    <button><a href="../System_Admin/SystemAdmin.php">System Admin</a></button>
-    <button><a href="../User/HomePage.php">User</a></button>
-    <button><a href="../User/Profile.php">Profile</a></button>
-    <br><br>
--->
+<br>
     <div class="form-popup" id="SignUpForm">
         <form id="SignUpForm" method="post">
             <h1>Sign Up</h1>

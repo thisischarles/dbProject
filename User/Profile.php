@@ -1,3 +1,6 @@
+<?php
+    include('../System/Header.php');
+   ?>
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -39,47 +42,48 @@
   </style>
 </head>
 <body>
-  <?php
-    include('../System/Header.php');
-   ?>
+  
   <table border = "0">
     <tr>
       <th>
        	<?php
-	$imgID = $_SESSION['user_id'];
-	$img = "SELECT $imgID FROM Images WHERE ImageID = $imgID ";
-	echo $img;
+		$imageID = $db->query("SELECT ImageID FROM User WHERE UserID = $id;");
+		$row = mysqli_fetch_array($imageID);
+		$t = $row['ImageID'];
+		$image = "SELECT Image FROM Images WHERE ImageID = $t;";
+		
+		$imageOfUser = $db->query($image);
+		$imag = mysqli_fetch_array($imageOfUser);
+		
+		$userImage = $imag['Image']; 
+		echo "<img src = $userImage>"; 
+		
 	?>
       </th>
     </tr>
     <tr>
       <td>
         <?php
-	$first_name = "SELECT FirstName FROM User WHERE UserID = $_SESSION['user_id']"; 
-	$last_name = "SELECT LastName FROM User WHERE UserID = $_SESSION['user_id']";
-	echo ($first_name." ".$last_name);
-	?>
-      </td>
-      <td>
-        <?php
-	$email = "SELECT Email FROM User WHERE UserID = $_SESSION['user_id']";
-	echo ($email);
-	?>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      	<?php
-	$DOB = "SELECT DOB FROM User WHERE UserID = $_SESSION['user_id']";
-	echo ($DOB);
+
+	$full_info = $db->query("SELECT * FROM User WHERE UserID = $id;"); 
+	$fullInfo = mysqli_fetch_array($full_info);
+	$f = $fullInfo['FirstName'];
+	$l = $fullInfo['LastName'];
+	$e = $fullInfo['Email'];
+	$DOB = $fullInfo['DOB'];
+	echo $f." ".$l;
+	echo $e;
+	echo $DOB;
 	?>
       </td>
     </tr>
+
   </table>
   <?php
     include('../System/Footer.php');
    ?>
    <script>
+	
    </script>
 </body>
 </html>

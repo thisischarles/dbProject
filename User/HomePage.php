@@ -12,7 +12,7 @@
    <table border = "0">
      <tr>
        <th>
-        <img class="img" src="" alt = "Karen" />
+	//image 
        </th>
      </tr>
      <tr>
@@ -20,6 +20,10 @@
          <button class="button" onclick = "openParticipantForm()">Add participant to event</button>
          <div class="form-popup" id="addParticipantForm">
            <form action="/action_page.php" class="form-container">
+		<?php
+			echo "List of events: \n";
+			getEvents($_SESSION['user_id']);
+		?>
              <h1>Participant</h1>
 		
              <label for="name"><b>Name</b></label>
@@ -72,5 +76,10 @@
     include("../System/Footer.php");
    ?>
   <script src="Homepage.js"></script>
+	<script>
+		function getEvents(UserID){
+			
+		}
+	</script>	
 </body>
 </html>

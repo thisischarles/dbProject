@@ -25,13 +25,14 @@ else {
    	$sql4 = "SELECT * FROM User WHERE Email = '" . $enteredUserInfo . "'";
     	$result3 = $db->query($sql3);
     	$result4 = $db->query($sql4);
-    	$problem = "";
+    	$problem = "<div class='alert alert-danger'>";
     	// show all problems in the form that exit
     	if ((mysqli_num_rows($result3) == 0) && (mysqli_num_rows($result4) == 0)) {
-        	$problem .= "User name/email does not exist";
+        	$problem .= "User name / email does not exist.<br><br>";
     	} elseif ((mysqli_num_rows($result1) == 0) && (mysqli_num_rows($result2) == 0)) {
-       		$problem .= "Incorrect password";
+       		$problem .= "Incorrect password.<br><br>";
     	}
+    	$problem .= "</div>";
     	$url = "Location: Sign_In.php?problem=$problem";
     	header($url);
 }

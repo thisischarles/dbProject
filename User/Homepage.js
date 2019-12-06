@@ -37,3 +37,5 @@ function openCreateGroupForm(){
 function closeCreateGroupForm(){
     document.getElementById("createGroupForm").style.display ="none";
 }
+
+

@@ -14,27 +14,33 @@ Events
 </h1>
 <hr>
 <br>
-<button class="button" onClick="openEventForm()">View Events</button>
+<?php 
+	if (isset($_GET["Event"]))
+  	{      	
+		$sql1 = "SELECT * from Events WHERE EventID = ".$_GET['Event'].";";
+		$result = $db->query($sql1);
+		if (mysqli_num_rows($result) >= 1) 
+		{
+			echo "<table border='1'>";
+            			echo "<tr >";
+                	echo "<th align='left'><h3><font color='grey'>Event Description</font></h3></th>";
+            			echo "</tr> ";
+			while($row = mysqli_fetch_array($result))
+			{
+	    			echo "<tr>";
+				echo "<td>".$row['Description']."</td>";
+				echo "</tr>";
+			}
+			echo "</table>";
+		}
+	}
+?>
 <br>
 <br>
 <button class="button" onClick="openPostEventForm()">Post Event</button>
 <br>
 <br>
-<div class="form-popup" id="ViewEventForm">
-	<form action="/action_page.php" Class="form-container">
-		<h1>Events</h1>
-		<label for="eventTitle"><b>Event Title1</b></label>
-		<label for="eventInformation"><b>Event Info1</b></label>
-		<br>
-		<label for="eventTitle"><b>Event Title2</b></label>
-		<label for="eventInformation"><b>Event Info2</b></label>
-		<br>
-		<label for="eventTitle"><b>Event Title3</b></label>
-		<label for="eventInformation"><b>Event Info3</b></label>
-		<br> <br>
-		<button class="closeButton" onClick="closePostEventForm()">Cancel</button>
-	</form>
-</div>
+
 <div class="form-popup" id="PostEventForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>Post an Event</h1>

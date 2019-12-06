@@ -31,6 +31,16 @@ Controller
 <br>
 <div class="form-popup" id="ChargeRateForm">
 	<form action="/action_page.php" Class="form-container">
+		<?php
+		$sql1 = "SELECT ChargeRate FROM SystemAttributes";
+		$result1 = $db->query($sql1);
+		if(mysqli_num_rows($result1)>=1)
+		{
+			$row = $result1->fetch_assoc();
+			$chargeRate = $row['ChargeRate'];
+			echo "Current charge rate: ".$chargeRate;
+		}
+		?>
 		<h1>Set charge rate</h1>
 		<br>
 		<label for="ChargeRate"><b>Charge rate</b></label>
@@ -42,6 +52,16 @@ Controller
 </div>
 <div class="form-popup" id="BandWidthForm">
 	<form action="/action_page.php" Class="form-container">
+		<?php
+		$sql1 = "SELECT DefaultBW FROM SystemAttributes";
+		$result1 = $db->query($sql1);
+		if(mysqli_num_rows($result1)>=1)
+		{
+			$row = $result1->fetch_assoc();
+			$bandWidth = $row['DefaultBW'];
+			echo "Default Bandwidth: ".$bandWidth;
+		}
+		?>
 		<h1>Set bandwidth</h1>
 		<br>
 		<label for="BandWidth"><b>Bandwidth</b></label>
@@ -64,23 +84,34 @@ Controller
 </div> 
 <div class="form-popup" id="StorageForm">
 	<form action="/action_page.php" Class="form-container">
+		<?php
+		$sql1 = "SELECT DefaultStorage FROM SystemAttributes";
+		$result1 = $db->query($sql1);
+		if(mysqli_num_rows($result1)>=1)
+		{
+			$row = $result1->fetch_assoc();
+			$storage = $row['DefaultStorage'];
+			echo "Default Storage: ".$storage;
+		}
+		?>
 		<h1>Set Storage</h1>
 		<br>
 		<label for="Storage"><b>Storage</b></label>
 		<input type="text" placeholder="Enter the Storage capacity" name="Storage" required>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button class="closeButton" onClick="closeEventStatusForm()">Cancel</button>
+		<button class="closeButton" onClick="closeStorageForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="PeriodForm">
 	<form action="/action_page.php" Class="form-container">
-		<h1>Set Period</h1>
+		<h1>Set default Period</h1>
+		<input type="text" placeholder="Enter the default period" name="defaultPeriod" required>
 		<br>
 		<label for="Period"><b>Period</b></label>
 		<br>
 		<button type="submit" class="submitButton">Submit</button>
-		<button class="closeButton" onClick="closeListOfEventsForm()">Cancel</button>
+		<button class="closeButton" onClick="closePeriodForm()">Cancel</button>
 	</form>
 </div>
 <?php
