@@ -3,6 +3,7 @@ include('../System/Header.php');
 if(isset($_GET['Event'])) {
 	$_SESSION['EventID'] = $_GET['Event'];
 }
+//Mario Bastiampillai 40016804 
 $groupinfo = $db->query("SELECT * from Events where EventID = ".$_SESSION['EventID'].";");
 $row = mysqli_fetch_array($groupinfo);
 echo "
