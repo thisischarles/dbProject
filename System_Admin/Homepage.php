@@ -4,6 +4,10 @@ if (isset($_SESSION['auth'])) {
 	if (mysqli_num_rows($db->query("SELECT * from SystemAdministrator where UserID = $id;")) >= 1) {
 ?>
 <!DOCTYPE html>
+<!--
+@Author: Mario Bastiampillai
+@Student_ID: 40016804
+-->
 <html>
 <head>
 <link rel="stylesheet" href="../design.css">
