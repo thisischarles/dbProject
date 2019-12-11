@@ -3,7 +3,7 @@ session_start();
 include("../sql_connector.php");
 
 $enteredUserInfo = $_POST["user_name"];
-$enteredPassword = $_POST["user_pass"]; //str_replace("\\", "#", crypt($_POST["user_pass"], 'TBD'));
+$enteredPassword = str_replace("\\", "#", crypt($_POST["user_pass"], 'TBD'));
 
 //$sql1 = "SELECT * from User where Username = \"$enteredUserInfo\" and Password =  \"$enteredPassword\"";
 $sql1 = "SELECT * from User where Username = \"$enteredUserInfo\" and Password =  \"$enteredPassword\"";
@@ -37,3 +37,4 @@ else {
     	header($url);
 }
 ?>
+

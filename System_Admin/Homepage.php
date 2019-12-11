@@ -22,7 +22,7 @@ System Admin
 <button class="button" onClick="openManagerForm()">Assign Manager</button>
 <br>
 <br>
-<button class="button" onClick="openParticipantForm()">Add Participant</button>
+<button class="button" onClick="openParticipantForm()">Edit Participants</button>
 <br>
 <br>
 <button class="button" onClick="openEventStatusForm()">Change Event Status</button>
@@ -122,27 +122,103 @@ echo "</table>";
 			{
 				$managerUsernameVariable=$_GET['Manager1'];
 				$eventAssignedVariable=$_GET['Manager3'];
-				$sql1 = "INSERT INTO EventManager(UserID, EventID) VALUES ('$managerUsernameVariable', '$eventAssignedVariable');";
-				$db->query($sql1);
+				$sql1 = "SELECT UserID FROM User WHERE Username = '$managerUsernameVariable';";
+				$result1 = $db->query($sql1);
+				if(mysqli_num_rows($result1)>=1)
+				{
+					$row = $result1->fetch_assoc();
+					$UID = $row['UserID'];
+					$sql3 = "INSERT INTO EventManager(UserID, EventID) VALUES ('$UID', '$eventAssignedVariable');";
+					$db->query($sql3);
+				}
 			}
 		?>
 		<button class="closeButton" onClick="closeManagerForm()">Cancel</button>
 	</form>
 </div>
 <div class="form-popup" id="ParticipantForm">
-	<form action="/action_page.php" Class="form-container">
-		<h1>Add Participant</h1>
-		<br>
-		<label for="ParticipantFirstName"><b>Participant First Name</b></label>
-		<input type="text" placeholder="Enter the Participant's First Name" name="particpant1" required>
-		<br>
-		<label for="ParticipantLastName"><b>Participant Last Name</b></label>
-		<input type="text" placeholder="Enter the Participant's Last Name" name="participant2" required>
-		<br>
-		<button type="submit" class="submitButton">Submit</button>
-		<button class="closeButton" onClick="closeParticipantForm()">Cancel</button>
-	</form>
-</div> 
+    <form Class="form-container">
+        <h3>Choose Event</h3>
+        <select name="event">
+            <option selected disabled>Choose one</option>
+          <?php 
+	$result = $db->query("SELECT EventID from Events;");
+	while($row = mysqli_fetch_array($result)){
+		$EID = $row['EventID'];
+		$row2 = mysqli_fetch_array($db->query("SELECT Name, Organization from Events where EventID = $EID;"));
+            	echo "<option value='$EID'>".$row2['Name'].", ".$row2['Organization']."</option>";
+	}
+         ?>
+        </select>
+        <br>
+	<p>Please select to delete or modify:</p>
+	  	<input onclick="openModi()" type="radio" id='delete' name="choice" value="Delete">Delete<br>
+	  	<input onclick="openModi()" type="radio" id='modify' name="choice" value="Modify">Modify<br> 
+		<input onclick="openModi()" type="radio" id='add' name="choice" value="Add" checked>Add<br> 
+         <h3>Enter their Username</h3>
+        <input type="text" placeholder="Enter the username" name="username">
+	<div class="hiding" id="Modi">
+		<h3>Modifications</h3>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">Last Name: </label><input style="width: 150px;  height:20px;" type="text"name="changeLast"></div>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">First Name: </label><input style="width: 150px;  height:20px;" type="text" name="changeFirst"></div>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">Address: </label><input style="width: 150px;  height:20px;" type="text"name="changeAddress"></div>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">Email: </label><input style="width: 150px;  height:20px;" type="text" name="changeEmail"></div>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">DOB: </label><input style="width: 150px;  height:20px;" type="date" name="changeDOB"></div>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">Phone Number: </label><input style="width: 150px;  height:20px;" type="text" name="changePN"></div>
+		<div style="padding: 5px 5px; height:30px;"><label for="ModifyEvent">Username: </label><input style="width: 150px;  height:20px;" type="text"name="changeUsername"></div>
+	</div>
+        <button type="submit" name="DUA" class="submitButton">Submit</button>
+        <button class="closeButton" onClick="closeRemoveAddUpdateForm()">Cancel</button>
+    </form>
+</div>
+
+<?php 
+	if(isset($_GET['DUA'])) {
+		$result = $db->query("Select * from User where Username = '".$_GET['username']."';");
+		if(mysqli_num_rows($result) >= 1) {
+			$row = $result->fetch_assoc();
+			$choice = $_GET['choice'];
+			if($choice == 'Delete') {
+				$db->query("DELETE FROM EventParticipant where UserID = ".$row['UserID']." AND EventID = ".$_GET['event'].";");
+			}
+			elseif($choice == 'Add') {
+				$db->query("INSERT INTO EventParticipant (UserID, EventID) VALUES (".$row['UserID'].",".$_GET['event'].");");
+			}
+			else {
+				echo "SELECT * FROM EventParticipant where UserID = ".$row['UserID']." AND EventID = ".$_GET['event'].";";
+				if(mysqli_num_rows($db->query("SELECT * FROM EventParticipant where UserID = ".$row['UserID']." AND EventID = ".$_GET['event'].";")) >= 1) {
+					$ln=$_GET['changeLast'];
+					$fn=$_GET['changeFirst'];
+					$address=$_GET['changeAddress'];
+					$email=$_GET['changeEmail'];
+					$dob=$_GET['changeDOB'];
+					$pn = (float) str_replace('-', '', $_GET['changePN']);
+					$un=$_GET['changeUsername'];
+					if($ln != null)
+						$db->query("UPDATE User set LastName = '$ln' where UserID = ".$row['UserID'].";");
+					if($fn != null)
+						$db->query("UPDATE User set FirstName = '$fn' where UserID = ".$row['UserID'].";");
+					if($address != null)
+						$db->query("UPDATE User set Address = '$address' where UserID = ".$row['UserID'].";");
+					if($email != null)
+						$db->query("UPDATE User set Email = '$email' where UserID = ".$row['UserID'].";");
+					if($dob != null)
+						$db->query("UPDATE User set DOB = '$dob' where UserID = ".$row['UserID'].";");
+					if($pn != null)
+						$db->query("UPDATE User set Phone = $pn where UserID = ".$row['UserID'].";");
+					if($un != null)
+						$db->query("UPDATE User set Username = '$un' where UserID = ".$row['UserID'].";");
+				}
+				else {
+					echo "That username is invalid for this event. Cannot modify anything.";
+				}
+			}
+		}
+		else {
+			echo "That username is invalid. Nothing Happened.";
+		}
+	}
+?>
 <div class="form-popup" id="EventStatusForm">
 	<form action="/action_page.php" Class="form-container">
 		<h1>Change Event Status</h1>

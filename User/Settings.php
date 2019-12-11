@@ -1,7 +1,12 @@
-  <?php
+<?php
     include('../System/Header.php');
-   ?>
+?>
 <!DOCTYPE html>
+<!--
+@Author: Charles Abou Haidar
+@Student_ID: 40024373
+Settings page for each user in database; options to change some information
+-->
 <html lang = "en">
 <head>
   <meta charset = "utf-8" />
@@ -135,8 +140,7 @@
 </head>
 <body>
 
-	<?php	
-
+	<?php
 		$imageID = $db->query("SELECT ImageID FROM User WHERE UserID = $id;");
 		$row = mysqli_fetch_array($imageID);
 		$t = $row['ImageID'];
@@ -146,7 +150,7 @@
 		$imag = mysqli_fetch_array($imageOfUser);
 		
 		$userImage = $imag['Image']; 
-		echo "<a href = 'Homepage.php'><img src = $userImage></a>"; 
+		echo "<a href = 'Homepage.php'><img src = $userImage></a>"; 	
 	?>
 
    <table border = "0">
@@ -154,40 +158,72 @@
        <td>
          <button class = "changePasswordButton" onclick = "openPasswordForm()">Change password</button>
          <div class="form-popup" id="passwordForm">
-           <form action="/action_page.php" class="form-container">
+           <form class="form-container" method = "POST">
              <h1>Change password</h1>
 
              <label for="password"><b>Password</b></label>
-             <input type="text" placeholder="Enter current password" name="password" required>
+             <input type="text" placeholder="Enter current password" name="password" required><br>
 
              <label for="psw"><b>New password</b></label>
-             <input type="password" placeholder="Enter Password" name="psw" required>
+             <input type="password" placeholder="Enter Password" name="newPassword" required><br>
 
              <label for="confirmPsw"><b>Confirm new password</b></label>
-             <input type="password" placeholder="Enter Password" name="psw" required>
+             <input type="password" placeholder="Enter Password" name="confirmNewPassword" required><br>
 
-             <button type="submit" class="submitButton">Confirm</button>
+		<br>
+             <button type="submit" class="submitButton" name = "submit">Confirm</button><br>
              <button type="button" class="closeButton" onclick="closePasswordForm()">Close</button>
+<?php
+		$pw = str_replace("\\", "#", crypt($_POST["password"], 'TBD'));
+		$newpw = $_POST['newPassword'];
+		$confirmNewPw = $_POST['confirmNewPassword'];
+		if($newpw == $confirmNewPw){
+			$newpw = str_replace("\\", "#", crypt($newpw, 'TBD'));
+			if(mysqli_num_rows($db->query("SELECT * FROM User WHERE UserID = $id AND Password = '$pw';")) >= 1){
+				if($db->query("UPDATE User SET Password = '$newpw' WHERE UserID = $id;")){
+					echo("Password changed!");
+				}
+				else{
+					echo("Error");
+				}		
+			}	
+		}
+		else{
+			echo("Passwords do not match!");
+		}	
+?>
            </form>
          </div>
        </td>
        <td>
          <button class = "changeEmailButton" onclick = "openEmailForm()">Change email</button>
          <div class="form-popup" id="emailForm">
-           <form action="/action_page.php" class="form-container">
+           <form class="form-container" method = "POST">
              <h1>Change email</h1>
 
-             <label for="email"><b>Email</b></label>
-             <input type="text" placeholder="Enter current email" name="email" required>
+             <label for="newEmail"><b>New email</b></label><br>
+             <input type="text" placeholder="Enter new email" name="newEmail" required><br>
 
-             <label for="newEmail"><b>New email</b></label>
-             <input type="text" placeholder="Enter Password" name="psw" required>
-
-             <label for="confirmNewEmail"><b>Confirm new email</b></label>
-             <input type="text" placeholder="Enter Password" name="psw" required>
+             <label for="confirmNewEmail"><b>Confirm new email</b></label><br>
+             <input type="text" placeholder="Confirm new email" name="confirmNewEmail" required><br>
 
              <button type="submit" class="submitButton">Confirm</button>
              <button type="button" class="closeButton" onclick="closeEmailForm()">Close</button>
+<?php
+		$newEmail= $_POST['newEmail'];
+		$confirmNewEmail = $_POST['confirmNewEmail'];
+		if($newEmail != null){
+			if($newEmail == $confirmNewEmail){
+				if($db->query("UPDATE User SET Email = '$newEmail' WHERE UserID = $id;")){
+					echo("Email changed to ".$newEmail."!");
+				}	
+			}	
+			else{
+				echo("Emails do not match!");
+			}
+		}	
+		
+?>
            </form>
          </div>
       </td>
@@ -196,78 +232,71 @@
        <td>
          <button class = "changeNameButton" onclick = "openNameForm()">Change name</button>
          <div class="form-popup" id="nameForm">
-           <form action="/action_page.php" class="form-container">
+           <form class="form-container" method = "POST">
              <h1>Change name</h1>
-             <label for="email"><b>Name</b></label>
-             <input type="text" placeholder="Enter current name" name="name" required>
+             <label for="newName"><b>New first name</b></label><br>
+             <input type="text" placeholder="Enter new name" name="newFN" required><br>
 
-             <label for="newName"><b>New name</b></label>
-             <input type="text" placeholder="Enter new name" name="newName" required>
-
-             <label for="confirmNewName"><b>Confirm new name</b></label>
-             <input type="text" placeholder="Confirm new name" name="confirmNewName" required>
+             <label for="confirmNewName"><b>New last name</b></label><br>
+             <input type="text" placeholder="Confirm new name" name="newLN" required><br>
 
              <button type="submit" class="submitButton">Confirm</button>
              <button type="button" class="closeButton" onclick="closeNameForm()">Close</button>
+<?php		
+		$newFN = $_POST['newFN'];
+		$newLN = $_POST['newLN'];
+		if($newFN != null){
+			if($db->query("UPDATE User SET FirstName = '$newFN' WHERE UserID = $id;")){
+				echo("Name changed to ".$newFN);
+			}
+			else{
+				echo("Error");
+			}		
+		}
+		if($newLN != null){
+			if($db->query("UPDATE User SET LastName = '$newLN' WHERE UserID = $id;")){
+				echo("Name changed to ".$newLN);
+			}
+			else{
+				echo("Error");
+			}		
+		}		
+	
+			
+?>	
            </form>
          </div>
        </td>
-
        <td>
          <button class = "changeDOBButton" onclick = "openDOBForm()">Change DOB</button>
          <div class="form-popup" id="DOBForm">
-           <form action="/action_page.php" class="form-container">
+           <form class="form-container" method = "POST">
              <h1>Change DOB</h1>
-
-             <label for="DOB"><b>DOB(DDMMYY)</b></label>
-             <input type="text" placeholder="Enter current DOB" name="DOB" required>
-
-             <label for="newDOB"><b>New DOB(DDMMYY)</b></label>
-             <input type="text" placeholder="Enter new DOB" name="newDOB" required>
-
-             <label for="confirmNewDOB"><b>Confirm new DOB(DDMMYY)</b></label>
-             <input type="text" placeholder="Confirm new DOB" name="confirmNewDOB" required>
+             <label for="newDOB"><b>New DOB(YYYY-MM-DD)</b></label><br>
+             <input type="text" placeholder="Enter new DOB" name="newDOB" type = "date" required><br>
 
              <button type="submit" class="submitButton">Confirm</button>
              <button type="button" class="closeButton" onclick="closeDOBForm()">Close</button>
+<?php
+	$newDOB = $_POST['newDOB'];
+		
+	if($db->query("UPDATE User SET DOB = '$newDOB' WHERE UserID = $id;")){
+		echo("DOB is updated to: ".$newDOB);
+	}
+	else{
+			echo("Error!");
+		}
+	
+?>
            </form>
          </div>
        </td>
      </tr>
    </table>
-  <?php
+
+<?php
     include('../System/Footer.php');
-   ?>
-   <script>
-   function openPasswordForm() {
-     document.getElementById("passwordForm").style.display = "block";
-   }
-   function closePasswordForm() {
-     document.getElementById("passwordForm").style.display = "none";
-   }
-
-   function openEmailForm() {
-     document.getElementById("emailForm").style.display = "block";
-   }
-
-   function closeEmailForm() {
-     document.getElementById("emailForm").style.display = "none";
-   }
-
-   function openNameForm() {
-     document.getElementById("nameForm").style.display = "block";
-   }
-   function closeNameForm() {
-     document.getElementById("nameForm").style.display = "none";
-   }
-
-   function openDOBForm(){
-     document.getElementById("DOBForm").style.display = "block";
-   }
-   function closeDOBForm(){
-     document.getElementById("DOBForm").style.display = "none";
-   }
-
-   </script>
+?>
+  <script src="Homepage.js"></script>	
 </body>
 </html>

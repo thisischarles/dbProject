@@ -56,3 +56,14 @@ function closeViewEvents()
     document.getElementById("changeB").innerHTML = '<button class="button" onClick="openViewEvents()">Open List Of Events</button>';
 }
 
+function openModi()
+{
+	console.log("hello");
+    	if(document.getElementById("modify").checked) {
+		document.getElementById("Modi").style.display="block";
+	}
+	else {
+		document.getElementById("Modi").style.display="none";
+	}
+}
+

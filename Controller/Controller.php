@@ -1,3 +1,6 @@
+<?php
+include('../System/Header.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +8,7 @@
     <title>Controller</title>
 </head>
 <body>
-<?php
-include('../System/Header.php');
-?>
+
 <h1>
 Controller
 <p>Welcome Controller Name!</p>
@@ -96,13 +97,42 @@ Controller
 	</form>
 </div>
 <div class="form-popup" id="DiscountForm">
-	<form action="/action_page.php" Class="form-container">
+	<form Class="form-container">
 		<h1>Set discount</h1>
 		<br>
-		<label for="Discount"><b>Discount</b></label>
-		<input type="text" placeholder="Enter the Discount" name="Discount" required>
+		<select size = "5" name = 'discountSelect' required>
+			<option selected disabled>Choose an Discount</option>
+			<?php	
+			$result = $db->query("SELECT DiscountID, Discount from Discount;");
+			if (mysqli_num_rows($result) >= 1) {
+				while($row = mysqli_fetch_array($result)){
+					$discountId = $row['DiscountID'];
+					$discount = $row['Discount'];
+            				echo "<option value='$discountId'>".$row['Discount']."</option>";
+				}
+			} 
+			
+			if(isset($_GET['discountSubmit']))
+			{
+				$discountVariable=$_GET['discountSelect'];
+				$eventVariable=$_GET['eventID'];
+				$sql1 = "SELECT DiscountID FROM Discount WHERE Discount = '$discountVariable' ;";
+				$result1 = $db->query($sql1);
+				if(mysqli_num_rows($result1)>=1)
+				{
+					$row = $result1->fetch_assoc();
+					$discountID = $row['DiscountID'];
+					$sql3 = "UPDATE Events SET DiscountID = '$discountID' WHERE EventID = '$eventVariable';";
+					$db->query($sql3);
+				}
+			}
+		
+		?>
 		<br>
-		<button type="submit" class="submitButton">Submit</button>
+		<label for="EventAssigned"><b>Event Assigned</b></label>
+		<input type="text" placeholder="Enter the assigned Event ID" name="eventID" required>
+		<br>
+		<input type="submit" name="discountSubmit" value="Submit" class="submitButton">
 		<button class="closeButton" onClick="closeDiscountForm()">Cancel</button>
 	</form>
 </div> 

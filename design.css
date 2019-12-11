@@ -113,6 +113,10 @@ a:hover, a:active {
     width: 44%;
 }
 
+input[type="text"] {
+    width: 200px;
+}
+
 select {
   width: 200px;
   max-width: 100%;
@@ -126,3 +130,4 @@ option {
   /* add border after every option */
   border-bottom: 1px solid #DDD;
 }
+

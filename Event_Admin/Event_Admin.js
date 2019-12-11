@@ -1,3 +1,5 @@
+
+
 function openModifyEventForm()
 {
     closeUploadForm();
@@ -62,14 +64,6 @@ function previewFile() {
 function openViewEvents()
 {
     document.getElementById("ViewEvents").style.display="block";
-}
-function closeViewEvents()
-{
-    document.getElementById("ViewEvents").style.display="none";
-}
-function openViewEvents()
-{
-    document.getElementById("ViewEvents").style.display="block";
     document.getElementById("changeB").innerHTML = '<button class="button" onClick="closeViewEvents()">Close List Of Events</button>';
 }
 function closeViewEvents()
@@ -77,4 +71,19 @@ function closeViewEvents()
     document.getElementById("ViewEvents").style.display="none";
     document.getElementById("changeB").innerHTML = '<button class="button" onClick="openViewEvents()">Open List Of Events</button>';
 }
+
+
+
+function openModi()
+{
+	console.log("hello");
+    	if(document.getElementById("modify").checked) {
+		document.getElementById("Modi").style.display="block";
+	}
+	else {
+		document.getElementById("Modi").style.display="none";
+	}
+}
+
+
 

@@ -1,78 +1,53 @@
-function openRegisterEventForm()
+function openEventForm()
 {
-    closeEventPageSetupForm();
-    closeRemoveAddUpdateForm();
+    closeParticipantForm();
     closeEventStatusForm();
-    closeExtendLifeForm();
-    closeEventForm();
-    document.getElementById("RegisterEventForm").style.display="block";
+    document.getElementById("EventForm").style.display="block";
 }
-function openEventPageSetupForm()
+function openParticipantForm()
 {
-    closeRegisterEventForm();
-    closeRemoveAddUpdateForm();
-    closeEventStatusForm();
-    closeExtendLifeForm();
     closeEventForm();
-    document.getElementById("EventPageSetupForm").style.display="block";
-}
-function openRemoveAddUpdateForm()
-{
-    closeRegisterEventForm();
-    closeEventPageSetupForm();
     closeEventStatusForm();
-    closeExtendLifeForm();
-    closeEventForm();
-    document.getElementById("RemoveAddUpdateForm").style.display="block";
+    document.getElementById("ParticipantForm").style.display="block";
 }
 function openEventStatusForm()
 {
-    closeRegisterEventForm();
-    closeEventPageSetupForm();
-    closeRemoveAddUpdateForm();
-    closeExtendLifeForm();
     closeEventForm();
+    closeParticipantForm();
     document.getElementById("EventStatusForm").style.display="block";
 }
-function openExtendLifeForm()
-{
-    closeRegisterEventForm();
-    closeEventPageSetupForm();
-    closeRemoveAddUpdateForm();
-    closeEventStatusForm();
-    closeEventForm();
-    document.getElementById("ExtendLifeForm").style.display="block";
-}
-function openEventForm()
-{
-    closeRegisterEventForm();
-    closeEventPageSetupForm();
-    closeRemoveAddUpdateForm();
-    closeEventStatusForm();
-    closeExtendLifeForm();
-    document.getElementById("EventForm").style.display="block";
-}
 
-function closeRegisterEventForm()
+function closeEventForm()
 {
-    document.getElementById("RegisterEventForm").style.display="none";
+    document.getElementById("EventForm").style.display="none";
 }
-function closeEventPageSetupForm()
+function closeParticipantForm()
 {
-    document.getElementById("EventPageSetupForm").style.display="none";
-}
-function closeRemoveAddUpdateForm()
-{
-    document.getElementById("RemoveAddUpdateForm").style.display="none";
+    document.getElementById("ParticipantForm").style.display="none";
 }
 function closeEventStatusForm()
 {
     document.getElementById("EventStatusForm").style.display="none";
 }
-function closeExtendLifeForm() {
-    document.getElementById("ExtendLifeForm").style.display = "none";
-}
-function closeEventForm()
+function openViewEvents()
 {
-    document.getElementById("EventForm").style.display="none";
+    document.getElementById("ViewEvents").style.display="block";
+    document.getElementById("changeB").innerHTML = '<button class="button" onClick="closeViewEvents()">Close List Of Events</button>';
 }
+function closeViewEvents()
+{
+    document.getElementById("ViewEvents").style.display="none";
+    document.getElementById("changeB").innerHTML = '<button class="button" onClick="openViewEvents()">Open List Of Events</button>';
+}
+
+function openModi()
+{
+	console.log("hello");
+    	if(document.getElementById("modify").checked) {
+		document.getElementById("Modi").style.display="block";
+	}
+	else {
+		document.getElementById("Modi").style.display="none";
+	}
+}
+

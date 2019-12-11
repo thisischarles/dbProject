@@ -1,9 +1,9 @@
 <?php
 include('../System/Header.php');
-if(isset($_GET['Event'])) {
-	$_SESSION['EventID'] = $_GET['Event'];
+if(isset($_GET['Group'])) {
+	$_SESSION['GroupID'] = $_GET['Group'];
 }
-$groupinfo = $db->query("SELECT * from Events where EventID = ".$_SESSION['EventID'].";");
+$groupinfo = $db->query("SELECT Name, Author, Fam, Secret, DateCreated from Groupy where GroupID = ".$_SESSION['GroupID'].";");
 $row = mysqli_fetch_array($groupinfo);
 echo "
 <table>
@@ -13,7 +13,7 @@ echo "
                ".$row['Name']."
             </h1>
             <h2>
-		".$row['Description']."
+		".$row['Name']."
             </h2>
             <h2>
     <button class='button' onClick='openPostContentForm()'>Post Content</button>
@@ -22,7 +22,7 @@ echo "
                 Past Posts
 ";
 	
-	$result1 = $db->query("SELECT PostID from HasAPost where EventID = ".$_SESSION['EventID'].";");
+	$result1 = $db->query("SELECT PostID from HasAPost where GroupID = ".$_SESSION['GroupID'].";");
 	while($row2 = mysqli_fetch_array($result1)){
 		echo "<table border='1'>";
 		$GID = $_SESSION['GroupID'];
@@ -83,9 +83,9 @@ echo "
             echo "<tr >";
 		echo "<th align='left'><h3><font color='grey'>Participants</font></h3></th>";
             echo "</tr> ";
-	$result1 = $db->query("SELECT UserID from EventParticipant where EventID = ".$_SESSION['EventID'].";");
+	$result1 = $db->query("SELECT UserID from GroupParticipant where GroupID = ".$_SESSION['GroupID'].";");
 	while($row2 = mysqli_fetch_array($result1)){
-		$GID = $_SESSION['EventID'];
+		$GID = $_SESSION['GroupID'];
 		$UID = $row2['UserID'];
 	    	echo "<tr>";
 		$url = "../User/Profile.php?UID=".$UID;
@@ -112,7 +112,6 @@ echo "
         <button class="closeButton" onClick="closeMessageForm()">Cancel</button>
     </form>
 </div>
-
 <div class="form-popup" id="PostContentForm">
     <form Class="form-container">
         <h1>Post Content</h1>
@@ -138,8 +137,12 @@ if(isset($_GET['posted'])) {
 		$db->query("insert into Post (Words, Author, Duration, Deleted, Media) values ('$c', $id, '$date', false,'$i');");
 		$result1 = $db->query("Select @@identity;");
 	       	$row = $result1->fetch_assoc();
-		$db->query("insert into HasAPost (PostID, EventID) values (".$row['@@identity'].", ".$_SESSION['EventID'].");");
+		$db->query("insert into HasAPost (PostID, GroupID) values (".$row['@@identity'].", ".$_SESSION['GroupID'].");");
 	}
+
+ 
+
+
 if(isset($_GET['send'])) {
 	$db->query("INSERT INTO Messages (Sender, Message, New, MessageStatusID) VALUES ($id, '".$_GET['message']."', 0, 1);");
 	$result1 = $db->query("Select @@identity;");
@@ -147,6 +150,6 @@ if(isset($_GET['send'])) {
 	$db->query("insert into Recipient (MessageID, Recipient) values (".$row['@@identity'].", ".$_GET['uidholder'].");");
 }
 
-echo "<script src='Event.js'></script>";
+echo "<script src='Group.js'></script>";
 include('../System/Footer.php');
 ?>
