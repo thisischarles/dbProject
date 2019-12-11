@@ -2,6 +2,11 @@
     include('../System/Header.php');
  ?>
 <!DOCTYPE html>
+<!--
+@Author: Charles Abou Haidar
+@Student_ID: 40024373
+Profile for each user in database; different functionalities for user 
+-->
 <html lang = "en">
 <head>
   <meta charset="utf-8" />
